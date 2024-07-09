@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-stepper';
 
 const ExampleOne = () => {
   const defaultScrollViewProps = {

@@ -2,7 +2,7 @@
 ![](https://img.shields.io/npm/dt/react-native-progress-steps.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-# @ouedraogo/react-native-progress-steps
+# react-native-progress-stepper
 
 A simple and fully customizable React Native component that implements a progress stepper UI. 
 * Each steps content is displayed inside of a customizable ScrollView. 
@@ -19,19 +19,19 @@ Example One             |  Example Two
 If using yarn:
 
 ```
-yarn add @ouedraogo/react-native-progress-steps
+yarn add react-native-progress-stepper
 ```
 
 If using npm:
 
 ```
-npm i @ouedraogo/react-native-progress-steps
+npm i react-native-progress-stepper
 ```
 
 ## Usage
 
 ```
-import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-stepper';
 ```
 
 Simply place a `<ProgressStep />` tag for each desired step within the `<ProgressSteps />` wrapper.
@@ -91,7 +91,7 @@ return (
 ```typescript
 import React from 'react';
 import { View, Text, ScrollViewProps } from 'react-native';
-import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-stepper';
 
 const ExampleOne = () => {
   const defaultScrollViewProps: ScrollViewProps = {
@@ -172,7 +172,7 @@ export default ExampleOne;
 ```typescript
 import React from 'react';
 import { View, Text, ScrollViewProps, ViewStyle, TextStyle } from 'react-native';
-import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-stepper';
 
 const ExampleTwo = () => {
   const defaultScrollViewProps: ScrollViewProps = {

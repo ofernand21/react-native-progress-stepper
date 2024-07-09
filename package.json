@@ -1,6 +1,6 @@
 {
-  "name": "@ouedraogo/react-native-progress-steps",
-  "version": "1.0.0",
+  "name": "react-native-progress-stepper",
+  "version": "1.0.3",
   "description": "A TypeScript-based, fully customizable React Native component for implementing a streamlined progress stepper UI, adhering to modern React Native standards.",
   "main": "index.d.ts",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git"
+    "url": "git+https://github.com/ofernand21/react-native-progress-stepper.git"
   },
   "keywords": [
     "react-native",
@@ -27,9 +27,9 @@
   "author": "Fernand Ouedraogo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git"
+    "url": "https://github.com/ofernand21/react-native-progress-stepper/issues"
   },
-  "homepage": "https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git",
+  "homepage": "https://github.com/ofernand21/react-native-progress-stepper.git",
   "devDependencies": {
     "@tsconfig/react-native": "^3.0.5",
     "@types/jest": "^29.5.12",

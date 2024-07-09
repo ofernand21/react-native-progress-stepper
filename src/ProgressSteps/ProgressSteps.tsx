@@ -1,20 +1,14 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { times } from 'lodash';
-import StepIcon from '@/ProgressSteps/StepIcon';
-
-interface ChildProps {
-  label: string;
-  // Ajoutez d'autres propriétés ici si nécessaire
-  [key: string]: any; // Pour permettre des props supplémentaires
-}
+import StepIcon from './StepIcon';
 
 interface ProgressStepsProps {
   isComplete?: boolean;
   activeStep?: number;
   topOffset?: number;
   marginBottom?: number;
-  children: ReactElement<ChildProps>[]; // Typage des enfants avec ChildProps
+  children: ReactElement[];
 }
 
 const ProgressSteps: React.FC<ProgressStepsProps> = ({
@@ -40,20 +34,15 @@ const ProgressSteps: React.FC<ProgressStepsProps> = ({
       const isCompletedStep = isComplete ? true : i < currentStep;
       const isActiveStep = isComplete ? false : i === currentStep;
 
-      const child = children[i];
-      const label = React.isValidElement(child) ? child.props.label : '';
-
       return (
         <View key={i}>
           <StepIcon
-            stepCount={stepCount}
             stepNum={i + 1}
-            label={label}
+            label={(children[i] as ReactElement<any>).props.label}
             isFirstStep={i === 0}
             isLastStep={i === stepCount - 1}
             isCompletedStep={isCompletedStep}
             isActiveStep={isActiveStep}
-            // Ajouter d'autres props ici si nécessaire
           />
         </View>
       );
@@ -83,12 +72,11 @@ const ProgressSteps: React.FC<ProgressStepsProps> = ({
     <View style={{ flex: 1 }}>
       <View style={styles.stepIcons}>{renderStepIcons()}</View>
       <View style={{ flex: 1 }}>
-        {React.isValidElement(children[currentStep]) &&
-          React.cloneElement(children[currentStep], {
-            setActiveStep: setActiveStep,
-            activeStep: currentStep,
-            stepCount: stepCount,
-          })}
+        {React.cloneElement(children[currentStep] as ReactElement, {
+          setActiveStep: setActiveStep,
+          activeStep: currentStep,
+          stepCount: stepCount,
+        })}
       </View>
     </View>
   );

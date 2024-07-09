@@ -1,17 +1,18 @@
 import React from 'react';
-import { View, ScrollView, TouchableOpacity, Text, ViewStyle, ScrollViewProps } from 'react-native';
-import ProgressButtons from '@/ProgressSteps/ProgressButtons';
+import { View, ScrollView, TouchableOpacity, Text, ViewStyle, ScrollViewProps, TextStyle } from 'react-native';
+import ProgressButtons from './ProgressButtons';
 
 interface ProgressStepProps {
   label?: string;
   onNext?: () => Promise<void> | void;
   onPrevious?: () => void;
   onSubmit?: () => void;
-  activeStep?: number;
+  setActiveStep: (step: number) => void;
+  activeStep: number;
   nextBtnText?: string;
   previousBtnText?: string;
   finishBtnText?: string;
-  stepCount?: number;
+  stepCount: number;
   nextBtnStyle?: ViewStyle;
   nextBtnTextStyle?: ViewStyle;
   nextBtnDisabled?: boolean;
@@ -26,15 +27,11 @@ interface ProgressStepProps {
   children: React.ReactNode;
 }
 
-interface ColorProps {
-  color: '#007AFF' | '#cdcdcd',
-  fontSize?: number
-}
-
 const ProgressStep: React.FC<ProgressStepProps> = ({
   onNext,
   onPrevious,
   onSubmit,
+  setActiveStep,
   activeStep,
   nextBtnText = 'Next',
   previousBtnText = 'Previous',
@@ -55,10 +52,12 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
 }) => {
   const handleNextStep = async () => {
     if (onNext) await onNext();
+    if (!errors) setActiveStep(activeStep + 1);
   };
 
   const handlePreviousStep = () => {
     if (onPrevious) onPrevious();
+    setActiveStep(activeStep - 1);
   };
 
   const handleSubmit = () => {
@@ -72,13 +71,13 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
       ...nextBtnStyle,
     };
 
-    const btnTextStyle: ColorProps = {
+    const btnTextStyle: TextStyle = {
       color: '#007AFF',
       fontSize: 18,
       ...nextBtnTextStyle,
     };
 
-    const disabledBtnText: ColorProps = {
+    const disabledBtnText = {
       color: '#cdcdcd',
     };
 
@@ -88,11 +87,11 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
     return (
       <TouchableOpacity
         style={btnStyle}
-        onPress={activeStep === (stepCount?? 1) - 1 ? handleSubmit : handleNextStep}
+        onPress={activeStep === stepCount - 1 ? handleSubmit : handleNextStep}
         disabled={nextBtnDisabled}
       >
         <Text style={textStyle}>
-          {activeStep === (stepCount?? 1) - 1 ? finishBtnText : nextBtnText}
+          {activeStep === stepCount - 1 ? finishBtnText : nextBtnText}
         </Text>
       </TouchableOpacity>
     );
@@ -105,13 +104,13 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
       ...previousBtnStyle,
     };
 
-    const btnTextStyle: ColorProps = {
+    const btnTextStyle: TextStyle = {
       color: '#007AFF',
       fontSize: 18,
       ...previousBtnTextStyle,
     };
 
-    const disabledBtnText: ColorProps = {
+    const disabledBtnText = {
       color: '#cdcdcd',
     };
 
