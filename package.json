@@ -1,14 +1,14 @@
 {
-  "name": "react-native-progress-steps",
-  "version": "1.3.4",
-  "description": "A simple and fully customizable React Native component that implements a progress stepper UI.",
-  "main": "index.js",
+  "name": "@ouedraogo/react-native-progress-steps",
+  "version": "1.0.0",
+  "description": "A TypeScript-based, fully customizable React Native component for implementing a streamlined progress stepper UI, adhering to modern React Native standards.",
+  "main": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/colbymillerdev/react-native-progress-steps.git"
+    "url": "git+https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git"
   },
   "keywords": [
     "react-native",
@@ -24,12 +24,12 @@
     "progress",
     "progress steps"
   ],
-  "author": "Colby Miller",
+  "author": "Fernand Ouedraogo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/colbymillerdev/react-native-progress-steps/issues"
+    "url": "https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git"
   },
-  "homepage": "https://github.com/colbymillerdev/react-native-progress-steps#readme",
+  "homepage": "https://github.com/ofernand21/-ouedraogo-react-native-progress-steps.git",
   "devDependencies": {
     "@tsconfig/react-native": "^3.0.5",
     "@types/jest": "^29.5.12",

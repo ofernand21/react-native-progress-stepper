@@ -19,19 +19,19 @@ Example One             |  Example Two
 If using yarn:
 
 ```
-yarn add react-native-progress-steps
+yarn add @ouedraogo/react-native-progress-steps
 ```
 
 If using npm:
 
 ```
-npm i react-native-progress-steps
+npm i @ouedraogo/react-native-progress-steps
 ```
 
 ## Usage
 
 ```
-import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
+import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
 ```
 
 Simply place a `<ProgressStep />` tag for each desired step within the `<ProgressSteps />` wrapper.
@@ -92,38 +92,33 @@ The `errors` prop should be used if there's a need for validation and error hand
 Example usage of validation check:
 
 ```
-state = {
-    isValid: false,
-    errors: false
-};
+const [isValid, setIsValid] = useState(false);
+const [errors, setErrors] = useState(false);
 
-onNextStep = () => {
-    if (!this.state.isValid) {
-      this.setState({ errors: true });
+const onNextStep = () => {
+    if (!isValid) {
+        setErrors(true);
     } else {
-      this.setState({ errors: false });
+        setErrors(false);
     }
 };
 
-render() {
-    return (
-      <View style={{ flex: 1 }}>
+return (
+    <View style={{ flex: 1 }}>
         <ProgressSteps>
-          <ProgressStep label="First Step" onNext={this.onNextStep} errors={this.state.errors}>
+        <ProgressStep label="First Step" onNext={onNextStep} errors={errors}>
             <View style={{ alignItems: 'center' }}>
-              <Text>This is the content within step 1!</Text>
+            <Text>This is the content within step 1!</Text>
             </View>
-          </ProgressStep>
-          <ProgressStep label="Second Step">
+        </ProgressStep>
+        <ProgressStep label="Second Step">
             <View style={{ alignItems: 'center' }}>
-              <Text>This is the content within step 2!</Text>
+            <Text>This is the content within step 2!</Text>
             </View>
-          </ProgressStep>
+        </ProgressStep>
         </ProgressSteps>
-      </View>
-    );
-}
-
+    </View>
+);
 ```
 
 ## Documentation
@@ -182,7 +177,7 @@ Pull requests are always welcome! Feel free to open a new GitHub issue for any c
 **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ## Author
-Colby Miller | [https://colbymillerdev.com](https://colbymillerdev.com)
+Fernand Ouedraogo | [my linkedin](https://www.linkedin.com/in/fernand-ouedraogo-0aa130251/)
 
 ## License
 [MIT](./LICENSE)
