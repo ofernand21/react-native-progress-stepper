@@ -7,12 +7,11 @@ interface ProgressStepProps {
   onNext?: () => Promise<void> | void;
   onPrevious?: () => void;
   onSubmit?: () => void;
-  setActiveStep: (step: number) => void;
-  activeStep: number;
+  activeStep?: number;
   nextBtnText?: string;
   previousBtnText?: string;
   finishBtnText?: string;
-  stepCount: number;
+  stepCount?: number;
   nextBtnStyle?: ViewStyle;
   nextBtnTextStyle?: ViewStyle;
   nextBtnDisabled?: boolean;
@@ -36,7 +35,6 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
   onNext,
   onPrevious,
   onSubmit,
-  setActiveStep,
   activeStep,
   nextBtnText = 'Next',
   previousBtnText = 'Previous',
@@ -57,12 +55,10 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
 }) => {
   const handleNextStep = async () => {
     if (onNext) await onNext();
-    if (!errors) setActiveStep(activeStep + 1);
   };
 
   const handlePreviousStep = () => {
     if (onPrevious) onPrevious();
-    setActiveStep(activeStep - 1);
   };
 
   const handleSubmit = () => {
@@ -92,11 +88,11 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
     return (
       <TouchableOpacity
         style={btnStyle}
-        onPress={activeStep === stepCount - 1 ? handleSubmit : handleNextStep}
+        onPress={activeStep === (stepCount?? 1) - 1 ? handleSubmit : handleNextStep}
         disabled={nextBtnDisabled}
       >
         <Text style={textStyle}>
-          {activeStep === stepCount - 1 ? finishBtnText : nextBtnText}
+          {activeStep === (stepCount?? 1) - 1 ? finishBtnText : nextBtnText}
         </Text>
       </TouchableOpacity>
     );

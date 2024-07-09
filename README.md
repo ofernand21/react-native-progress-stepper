@@ -2,7 +2,7 @@
 ![](https://img.shields.io/npm/dt/react-native-progress-steps.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-# react-native-progress-steps
+# @ouedraogo/react-native-progress-steps
 
 A simple and fully customizable React Native component that implements a progress stepper UI. 
 * Each steps content is displayed inside of a customizable ScrollView. 
@@ -84,6 +84,201 @@ return (
         </ProgressSteps>
     </View>
 )
+```
+
+### With typescript
+
+```typescript
+import React from 'react';
+import { View, Text, ScrollViewProps } from 'react-native';
+import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+
+const ExampleOne = () => {
+  const defaultScrollViewProps: ScrollViewProps = {
+    keyboardShouldPersistTaps: 'handled',
+    contentContainerStyle: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+  };
+
+  const onNextStep = () => {
+    console.log('called next step');
+  };
+
+  const onPaymentStepComplete = () => {
+    alert('Payment step completed!');
+  };
+
+  const onPrevStep = () => {
+    console.log('called previous step');
+  };
+
+  const onSubmitSteps = () => {
+    console.log('called on submit step.');
+  };
+
+  return (
+    <View style={{ flex: 1, marginTop: 50 }}>
+      <ProgressSteps>
+        <ProgressStep
+          label="Payment"
+          onNext={onPaymentStepComplete}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>Payment step content</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Shipping Address"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>Shipping address step content</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Billing Address"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>Billing address step content</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Confirm Order"
+          onPrevious={onPrevStep}
+          onSubmit={onSubmitSteps}
+          scrollViewProps={defaultScrollViewProps}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>Confirm order step content</Text>
+          </View>
+        </ProgressStep>
+      </ProgressSteps>
+    </View>
+  );
+};
+
+export default ExampleOne;
+```
+
+```typescript
+import React from 'react';
+import { View, Text, ScrollViewProps, ViewStyle, TextStyle } from 'react-native';
+import { ProgressSteps, ProgressStep } from '@ouedraogo/react-native-progress-steps';
+
+const ExampleTwo = () => {
+  const defaultScrollViewProps: ScrollViewProps = {
+    keyboardShouldPersistTaps: 'handled',
+    contentContainerStyle: {
+      flex: 1,
+      justifyContent: 'center'
+    }
+  };
+
+  const onNextStep = () => {
+    console.log('called next step');
+  };
+
+  const onPrevStep = () => {
+    console.log('called previous step');
+  };
+
+  const onSubmitSteps = () => {
+    console.log('called on submit step.');
+  };
+
+  const progressStepsStyle = {
+    activeStepIconBorderColor: '#686868',
+    activeLabelColor: '#686868',
+    activeStepNumColor: 'white',
+    activeStepIconColor: '#686868',
+    completedStepIconColor: '#686868',
+    completedProgressBarColor: '#686868',
+    completedCheckColor: '#4bb543'
+  };
+
+  const buttonTextStyle: ViewStyle | TextStyle = {
+    color: '#686868',
+    fontWeight: 'bold'
+  };
+
+  return (
+    <View style={{ flex: 1, marginTop: 50 }}>
+      <ProgressSteps {...progressStepsStyle}>
+        <ProgressStep
+          label="First"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={buttonTextStyle}
+          previousBtnTextStyle={buttonTextStyle}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>This is the content within step 1!</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Second"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={buttonTextStyle}
+          previousBtnTextStyle={buttonTextStyle}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>This is the content within step 2!</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Third"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={buttonTextStyle}
+          previousBtnTextStyle={buttonTextStyle}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>This is the content within step 3!</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Fourth"
+          onNext={onNextStep}
+          onPrevious={onPrevStep}
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={buttonTextStyle}
+          previousBtnTextStyle={buttonTextStyle}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>This is the content within step 4!</Text>
+          </View>
+        </ProgressStep>
+        <ProgressStep
+          label="Fifth"
+          onPrevious={onPrevStep}
+          onSubmit={onSubmitSteps}
+          scrollViewProps={defaultScrollViewProps}
+          nextBtnTextStyle={buttonTextStyle}
+          previousBtnTextStyle={buttonTextStyle}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <Text>This is the content within step 5!</Text>
+          </View>
+        </ProgressStep>
+      </ProgressSteps>
+    </View>
+  );
+};
+
+export default ExampleTwo;
 ```
 
 ### Current Step Error and Validation Handling
