@@ -14,10 +14,10 @@ interface ProgressStepProps {
   finishBtnText?: string;
   stepCount: number;
   nextBtnStyle?: ViewStyle;
-  nextBtnTextStyle?: ViewStyle;
+  nextBtnTextStyle?: TextStyle;
   nextBtnDisabled?: boolean;
   previousBtnStyle?: ViewStyle;
-  previousBtnTextStyle?: ViewStyle;
+  previousBtnTextStyle?: TextStyle;
   previousBtnDisabled?: boolean;
   scrollViewProps?: ScrollViewProps;
   viewProps?: ViewStyle;
